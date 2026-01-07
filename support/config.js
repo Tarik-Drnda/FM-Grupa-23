@@ -15,7 +15,8 @@ export const config = {
     implicit: 10000,
     explicit: 10000,
     pageLoad: 30000,
-    sleep: 2000
+    sleep: 2000,
+    longWaitMs: 60000
   },
   
   // Browser podešavanja
@@ -70,5 +71,16 @@ export const config = {
   checkoutLimits: {
     minimumAmount: 40,
     maximumAmount: 292
-  }
+  },
+
+  sqlInjectionPayloads: [
+    "' OR '1'='1",
+    "'; DROP TABLE users; --",
+    "1' OR '1' = '1' --",
+    "' UNION SELECT * FROM users --",
+    "admin'--",
+    "1; DELETE FROM orders WHERE '1'='1",
+    "' OR 1=1 --",
+    "'; INSERT INTO users VALUES('hacker'); --"
+  ],
 };
